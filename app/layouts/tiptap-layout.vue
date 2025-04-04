@@ -54,9 +54,7 @@ onBeforeUnmount(() => {
 
 // Navigation items
 const navigationItems = [
-  { name: 'Editor', icon: 'mdi:file-document-edit', to: '/tiptap' },
-  { name: 'Components', icon: 'mdi:puzzle-outline', to: '/tiptap/components' },
-  { name: 'Settings', icon: 'mdi:cog', to: '/tiptap/settings' },
+  { name: 'Github Repo', icon: 'mdi:github', to: 'https://github.com/productdevbook/tiptap-shadcn-vue' },
 ]
 
 // Computed properties for character and word counts
@@ -100,12 +98,10 @@ const showKeyboardShortcuts = ref(false)
                 <SidebarGroupContent>
                   <SidebarMenu>
                     <SidebarMenuItem v-for="item in navigationItems" :key="item.to">
-                      <SidebarMenuButton asChild>
-                        <NuxtLink :to="item.to" custom v-slot="{ href, isActive, navigate }">
-                          <a :href="href" @click="navigate" :class="isActive ? 'font-medium' : ''">
-                            <Icon :name="item.icon" class="h-4 w-4" />
-                            <span>{{ item.name }}</span>
-                          </a>
+                      <SidebarMenuButton asChild class="w-full">
+                        <NuxtLink :to="item.to" target="_blank" class="flex items-center gap-2 w-full px-2 py-1.5">
+                          <Icon :name="item.icon" class="h-4 w-4 flex-shrink-0" />
+                          <span class="truncate">{{ item.name }}</span>
                         </NuxtLink>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
