@@ -91,6 +91,43 @@ This library uses the following shadcn-ui components:
 
 Make sure these components are available in your project.
 
+## Development
+
+- pnpm install
+- pnpm dev
+
+This library is designed to be highly customizable. You can modify or extend any component to fit your specific needs:
+
+### Component Structure
+
+Components are located in the `components/tiptap` directory. Each component follows a consistent structure:
+
+```
+components/tiptap/
+├── TiptapEditor.vue
+├── TiptapContent.vue
+├── TiptapToolbar.vue
+└── ...
+```
+
+### Component Communication
+
+Components communicate through the editor instance provided by the `TiptapProvider`. When making changes:
+
+- Maintain the existing props and events to ensure compatibility
+- Use the editor instance for commands and state management
+- Emit appropriate events when modifying interactive elements
+
+### Styling Guidelines
+
+- Components use Tailwind CSS for styling
+- Follow the ShadCN design patterns for consistency
+- Use CSS variables defined in the theme for colors and spacing
+
+### Testing Changes
+
+After modifying components, test your changes thoroughly across different content types and editor states to ensure compatibility and stability.
+
 ## License
 
 MIT
