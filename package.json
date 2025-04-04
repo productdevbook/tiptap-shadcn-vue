@@ -10,8 +10,12 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@atlaskit/pragmatic-drag-and-drop": "^1.5.2",
+    "@atlaskit/pragmatic-drag-and-drop-hitbox": "^1.0.3",
+    "@iconify/vue": "^4.3.0",
     "@nuxt/icon": "1.11.0",
     "@tailwindcss/vite": "^4.1.2",
+    "@tiptap/vue-3": "^2.11.7",
     "@vueuse/core": "^13.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
