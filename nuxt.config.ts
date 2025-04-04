@@ -13,7 +13,11 @@ export default defineNuxtConfig({
     'notivue/notification.css',
     'notivue/animations.css',
   ],
-  modules: ['@nuxt/icon', 'notivue/nuxt', 'shadcn-nuxt'],
+  modules: [
+    '@nuxt/icon', 
+    'notivue/nuxt', 
+    'shadcn-nuxt',
+  ],
   icon: {
     serverBundle: 'remote',
     mode: 'svg',
@@ -30,4 +34,15 @@ export default defineNuxtConfig({
       tailwindcss(),
     ],
   },
+  shadcn: {
+    /**
+     * Prefix for all the imported component
+     */
+    prefix: '',
+    /**
+     * Directory that the component lives in.
+     * @default "./components/ui"
+     */
+    componentDir: './components/ui'
+  }
 })

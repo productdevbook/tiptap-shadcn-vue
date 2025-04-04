@@ -17,6 +17,7 @@
     "lucide-vue-next": "^0.487.0",
     "notivue": "^2.4.5",
     "nuxt": "^3.16.2",
+    "reka-ui": "^2.2.0",
     "shadcn-nuxt": "2.0.0",
     "tailwind-merge": "^3.1.0",
     "tailwindcss": "^4.1.2",
