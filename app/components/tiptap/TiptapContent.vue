@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { Editor } from '@tiptap/vue-3'
+import type { HTMLAttributes } from 'vue'
 import { cn } from '@/lib/utils'
-import { computed, onMounted, ref, watch, type HTMLAttributes } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useTiptapContext } from '.'
 
 const props = defineProps<{
@@ -42,7 +43,7 @@ onMounted(() => {
     editorDOM.setAttribute('role', 'textbox')
     editorDOM.setAttribute('aria-multiline', 'true')
     editorDOM.setAttribute('aria-label', 'Rich text editor')
-    
+
     // Add content description for screen readers
     const srDescription = document.createElement('span')
     srDescription.className = 'sr-only'
@@ -53,24 +54,24 @@ onMounted(() => {
 </script>
 
 <template>
-  <div 
+  <div
     :class="cn(
       'tiptap-editor-wrapper relative',
-      props.class
+      props.class,
     )"
     data-slot="tiptap-content"
     aria-label="Rich text editor"
   >
-    <div 
-      v-if="isEditorReady" 
+    <div
+      v-if="isEditorReady"
       ref="editorElement"
-      class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl dark:prose-invert h-full w-full focus:outline-none max-w-none px-4 py-6" 
+      class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl dark:prose-invert h-full w-full focus:outline-none max-w-none px-4 py-6"
       role="region"
     />
-    
-    <div 
-      v-else 
-      class="tiptap-editor-placeholder h-full w-full flex items-center justify-center text-muted-foreground text-sm italic" 
+
+    <div
+      v-else
+      class="tiptap-editor-placeholder h-full w-full flex items-center justify-center text-muted-foreground text-sm italic"
       aria-live="polite"
     >
       {{ placeholder || 'Loading editor...' }}
@@ -157,7 +158,7 @@ onMounted(() => {
   .tiptap-editor-wrapper .ProseMirror:focus-visible {
     outline: 3px solid CanvasText;
   }
-  
+
   .tiptap-editor-wrapper .component-selected {
     outline: 3px solid Highlight;
   }

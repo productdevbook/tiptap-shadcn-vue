@@ -1,13 +1,14 @@
 <script setup lang="ts">
+import type { HTMLAttributes } from 'vue'
 import { cn } from '@/lib/utils'
-import { computed, type HTMLAttributes, ref, watchEffect, onBeforeUnmount } from 'vue'
-import { useTiptapContext } from '.'
-import { TreeRoot } from 'reka-ui'
-import TiptapTreeItem from './TiptapTreeItem.vue'
+import { extractInstruction } from '@atlaskit/pragmatic-drag-and-drop-hitbox/tree-item'
 import { combine } from '@atlaskit/pragmatic-drag-and-drop/combine'
 import { monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter'
-import { extractInstruction } from '@atlaskit/pragmatic-drag-and-drop-hitbox/tree-item'
-import { updateTiptapTree, editorNodesToTree } from './tiptapTreeUtils'
+import { TreeRoot } from 'reka-ui'
+import { computed, onBeforeUnmount, watchEffect } from 'vue'
+import { useTiptapContext } from '.'
+import TiptapTreeItem from './TiptapTreeItem.vue'
+import { editorNodesToTree } from './tiptapTreeUtils'
 
 const props = defineProps<{
   editorNodes?: any[]
@@ -22,53 +23,57 @@ const emits = defineEmits<{
 }>()
 
 // Get context data if props were not provided directly
-const { 
-  editorNodes: contextNodes, 
+const {
+  editorNodes: contextNodes,
   selectNode,
   deleteNode,
   duplicateNode,
-  reorderNodes
+  reorderNodes,
 } = useTiptapContext()
 
 const nodes = computed(() => {
   const rawNodes = props.editorNodes ?? contextNodes.value ?? []
-  
+
   // Transform nodes to match the tree structure expected by TreeRoot
   return editorNodesToTree(rawNodes)
 })
 
 // Handle node selection
-const handleSelectNode = (id: string) => {
+function handleSelectNode(id: string) {
   if (selectNode) {
     selectNode(id)
-  } else {
+  }
+  else {
     emits('select-node', id)
   }
 }
 
 // Handle node duplication
-const handleDuplicateNode = (id: string) => {
+function handleDuplicateNode(id: string) {
   if (duplicateNode) {
     duplicateNode(id)
-  } else {
+  }
+  else {
     emits('duplicate-node', id)
   }
 }
 
 // Handle node deletion
-const handleDeleteNode = (id: string) => {
+function handleDeleteNode(id: string) {
   if (deleteNode) {
     deleteNode(id)
-  } else {
+  }
+  else {
     emits('delete-node', id)
   }
 }
 
 // Handle node reordering
-const handleReorderNodes = (params) => {
+function handleReorderNodes(params) {
   if (reorderNodes) {
     reorderNodes(params)
-  } else {
+  }
+  else {
     emits('reorder-nodes', params)
   }
 }
@@ -97,20 +102,20 @@ watchEffect((onCleanup) => {
         const targetId = target.data.id as string
 
         const instruction = extractInstruction(target.data)
-        
+
         if (instruction !== null) {
           if (instruction.type === 'reorder-above') {
             handleReorderNodes({
               sourceId,
               targetId,
-              position: 'before'
+              position: 'before',
             })
-          } 
+          }
           else if (instruction.type === 'reorder-below') {
             handleReorderNodes({
               sourceId,
               targetId,
-              position: 'after'
+              position: 'after',
             })
           }
         }
@@ -119,7 +124,7 @@ watchEffect((onCleanup) => {
   )
 
   cleanupDnd = dndFunction
-  
+
   onCleanup(() => {
     if (dndFunction) {
       dndFunction()
@@ -129,25 +134,25 @@ watchEffect((onCleanup) => {
 </script>
 
 <template>
-  <div 
+  <div
     :class="cn('tiptap-tree-structure', props.class)"
     data-slot="tiptap-structure"
-  >      
+  >
     <div v-if="!nodes || nodes.length === 0" class="text-sm text-muted-foreground italic p-2">
       No content yet. Start writing to see document structure.
     </div>
     <div v-else>
-      <TreeRoot 
+      <TreeRoot
         v-slot="{ flattenItems }"
-        class="list-none select-none w-full" 
+        class="list-none select-none w-full"
         :items="nodes"
         :get-key="(item) => item.title"
         multiple
       >
-        <TiptapTreeItem 
-          v-for="item in flattenItems" 
-          :key="item._id + item.index" 
-          :item="item" 
+        <TiptapTreeItem
+          v-for="item in flattenItems"
+          :key="item._id + item.index"
+          :item="item"
           v-bind="item.bind"
           @select-node="handleSelectNode"
           @duplicate-node="handleDuplicateNode"

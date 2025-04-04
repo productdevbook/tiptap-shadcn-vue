@@ -12,7 +12,6 @@ Let's build an amazing editor for Vue together! 🎨🔥
 
 ![image](https://github.com/user-attachments/assets/5a959d3a-645e-44b2-80d5-b027628cba5e)
 
-
 ## Components
 
 This package includes the following components:
@@ -48,7 +47,7 @@ Make sure to install the required dependencies:
 TODO: [CLI](https://github.com/productdevbook/tiptap-shadcn-vue/issues/1)
 
 ```bash
-# Install Shadcn CLI - comming soon 
+# Install Shadcn CLI - comming soon
 npx shadcn-vue@latest add "https://github.com/productdevbook/tiptap-shadcn-vue/component.json"
 ```
 
@@ -56,8 +55,8 @@ npx shadcn-vue@latest add "https://github.com/productdevbook/tiptap-shadcn-vue/c
 
 ```vue
 <script setup lang="ts">
-import { useEditor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
+import { useEditor } from '@tiptap/vue-3'
 
 const editor = useEditor({
   content: '<p>Hello World!</p>',

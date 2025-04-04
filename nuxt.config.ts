@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from '@tailwindcss/vite'
 
-
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
@@ -14,8 +13,8 @@ export default defineNuxtConfig({
     'notivue/animations.css',
   ],
   modules: [
-    '@nuxt/icon', 
-    'notivue/nuxt', 
+    '@nuxt/icon',
+    'notivue/nuxt',
     'shadcn-nuxt',
   ],
   icon: {
@@ -51,12 +50,12 @@ export default defineNuxtConfig({
         '@tiptap/starter-kit',
         '@tiptap/extension-placeholder',
         '@tiptap/extension-link',
-        '@tiptap/extension-character-count'
+        '@tiptap/extension-character-count',
       ],
     },
   },
   shadcn: {
     prefix: '',
-    componentDir: './app/components/ui'
+    componentDir: './app/components/ui',
   },
 })

@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import { useEditor } from '@tiptap/vue-3'
-import StarterKit from '@tiptap/starter-kit'
-import Placeholder from '@tiptap/extension-placeholder'
-import Link from '@tiptap/extension-link'
-import CharacterCount from '@tiptap/extension-character-count'
 import { TiptapProvider, TiptapTreeStructure } from '@/components/tiptap'
 import {
   Sidebar,
@@ -18,8 +13,12 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
-  useSidebar
 } from '@/components/ui/sidebar'
+import CharacterCount from '@tiptap/extension-character-count'
+import Link from '@tiptap/extension-link'
+import Placeholder from '@tiptap/extension-placeholder'
+import StarterKit from '@tiptap/starter-kit'
+import { useEditor } from '@tiptap/vue-3'
 
 // Editor content
 const content = ref('')
@@ -59,12 +58,14 @@ const navigationItems = [
 
 // Computed properties for character and word counts
 const characterCount = computed(() => {
-  if (!tiptapEditor.value) return 0
+  if (!tiptapEditor.value)
+    return 0
   return tiptapEditor.value.storage.characterCount?.characters() ?? 0
 })
 
 const wordCount = computed(() => {
-  if (!tiptapEditor.value) return 0
+  if (!tiptapEditor.value)
+    return 0
   return tiptapEditor.value.storage.characterCount?.words() ?? 0
 })
 
@@ -81,11 +82,10 @@ const showKeyboardShortcuts = ref(false)
           <Sidebar collapsible="icon">
             <!-- Sidebar header -->
             <SidebarHeader>
-                <SidebarMenuButton class="w-fit px-1.5">
-                    <Icon name="mdi:home" class="h-12 w-12" />
-                  <span class="truncate font-semibold">{{ 'Tiptap Editor' }}</span>
-                </SidebarMenuButton>
-
+              <SidebarMenuButton class="w-fit px-1.5">
+                <Icon name="mdi:home" class="h-12 w-12" />
+                <span class="truncate font-semibold">{{ 'Tiptap Editor' }}</span>
+              </SidebarMenuButton>
             </SidebarHeader>
 
             <!-- Sidebar content -->
@@ -98,7 +98,7 @@ const showKeyboardShortcuts = ref(false)
                 <SidebarGroupContent>
                   <SidebarMenu>
                     <SidebarMenuItem v-for="item in navigationItems" :key="item.to">
-                      <SidebarMenuButton asChild class="w-full">
+                      <SidebarMenuButton as-child class="w-full">
                         <NuxtLink :to="item.to" target="_blank" class="flex items-center gap-2 w-full px-2 py-1.5">
                           <Icon :name="item.icon" class="h-4 w-4 flex-shrink-0" />
                           <span class="truncate">{{ item.name }}</span>
@@ -158,7 +158,7 @@ const showKeyboardShortcuts = ref(false)
             <main class="flex-1 overflow-auto">
               <slot />
             </main>
-            
+
             <!-- Status Bar - moved from the page to the layout -->
             <div class="border-t p-2 bg-background mt-auto">
               <TiptapStatusBar :character-count="characterCount" :word-count="wordCount" />
@@ -167,7 +167,7 @@ const showKeyboardShortcuts = ref(false)
         </div>
       </SidebarProvider>
     </div>
-    
+
     <!-- Keyboard shortcuts dialog -->
     <Dialog v-model:open="showKeyboardShortcuts">
       <DialogContent>

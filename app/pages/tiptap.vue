@@ -2,7 +2,7 @@
 import { useMediaQuery } from '@vueuse/core'
 // Set the layout
 definePageMeta({
-  layout: 'tiptap-layout'
+  layout: 'tiptap-layout',
 })
 
 // Add this to determine if we're on mobile
@@ -15,20 +15,20 @@ const isMobile = useMediaQuery('(max-width: 768px)')
     <div v-if="!isMobile" class="border-b p-2 bg-background">
       <div class="flex items-center justify-between flex-wrap gap-y-2">
         <!-- Toolbar - Only show on desktop -->
-        <TiptapToolbar 
+        <TiptapToolbar
           class="flex-1"
         />
       </div>
     </div>
-    
+
     <!-- Editor Content Area -->
     <div class="flex-1 overflow-auto">
       <TiptapContent placeholder="Start writing..." />
     </div>
-    
+
     <!-- Mobile toolbar - Only show on mobile -->
-    <TiptapMobileToolbar 
-      v-if="isMobile" 
+    <TiptapMobileToolbar
+      v-if="isMobile"
       class="pb-safe"
     />
   </div>

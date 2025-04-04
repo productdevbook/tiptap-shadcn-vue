@@ -1,4 +1,18 @@
 <script lang="ts">
+</script>
+
+<script setup lang="ts">
+import type { HTMLAttributes } from 'vue'
+import { cn } from '@/lib/utils'
+import { Icon } from '@iconify/vue'
+import { computed } from 'vue'
+
+const props = defineProps<{
+  name: keyof typeof icons | (string & {})
+  size?: 'sm' | 'md' | 'lg'
+  class?: HTMLAttributes['class']
+}>()
+
 const icons = {
   Bold: 'lucide:bold',
   LoaderCircle: 'lucide:loader-circle',
@@ -102,21 +116,8 @@ const icons = {
   ImageSize: 'fluent:resize-image-24-filled',
   FlipVertical: 'lucide:flip-vertical',
   FlipHorizontal: 'lucide:flip-horizontal',
-  WrapText: 'lucide:wrap-text'
+  WrapText: 'lucide:wrap-text',
 }
-</script>
-
-<script setup lang="ts">
-import { computed } from 'vue'
-import { cn } from '@/lib/utils'
-import { Icon } from '@iconify/vue'
-import { type HTMLAttributes } from 'vue'
-
-const props = defineProps<{
-  name: keyof typeof icons | (string & {})
-  size?: 'sm' | 'md' | 'lg'
-  class?: HTMLAttributes['class']
-}>()
 
 // Resolve the icon name
 const iconName = computed(() => (icons as any)[props.name] as string || props.name)
@@ -137,11 +138,11 @@ if (!iconName.value) {
 </script>
 
 <template>
-  <Icon 
-    :icon="iconName" 
+  <Icon
+    :icon="iconName"
     :class="cn(
       sizeClasses,
-      props.class
+      props.class,
     )"
     data-slot="tiptap-icon"
   />

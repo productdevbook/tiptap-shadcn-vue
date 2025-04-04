@@ -1,6 +1,6 @@
 import type { Instruction } from '@atlaskit/pragmatic-drag-and-drop-hitbox/tree-item'
 
-export type TiptapTreeItem = {
+export interface TiptapTreeItem {
   title: string
   name: string
   icon: string
@@ -38,7 +38,7 @@ export const tiptapTree = {
         return item
       })
   },
-  
+
   insertBefore(data: TiptapTreeItem[], targetId: string, newItem: TiptapTreeItem): TiptapTreeItem[] {
     return data.flatMap((item) => {
       if (item.title === targetId)
@@ -53,7 +53,7 @@ export const tiptapTree = {
       return item
     })
   },
-  
+
   insertAfter(data: TiptapTreeItem[], targetId: string, newItem: TiptapTreeItem): TiptapTreeItem[] {
     return data.flatMap((item) => {
       if (item.title === targetId)
@@ -69,7 +69,7 @@ export const tiptapTree = {
       return item
     })
   },
-  
+
   find(data: TiptapTreeItem[], itemId: string): TiptapTreeItem | undefined {
     for (const item of data) {
       if (item.title === itemId)
@@ -81,10 +81,10 @@ export const tiptapTree = {
           return result
       }
     }
-    
+
     return undefined
   },
-  
+
   hasChildren(item: TiptapTreeItem): boolean {
     return Array.isArray(item.children) && item.children.length > 0
   },
@@ -93,67 +93,69 @@ export const tiptapTree = {
 export function updateTiptapTree(data: TiptapTreeItem[], action: TiptapTreeAction) {
   if (action.type === 'instruction') {
     const { instruction, itemId, targetId } = action
-    
+
     // Find the item that's being moved
     const item = tiptapTree.find(data, itemId)
     if (!item)
       return data
-    
+
     // Don't allow dropping on itself
     if (itemId === targetId)
       return data
-    
+
     if (instruction.type === 'reorder-above') {
       let result = tiptapTree.remove(data, itemId)
       result = tiptapTree.insertBefore(result, targetId, item)
       return result
     }
-    
+
     if (instruction.type === 'reorder-below') {
       let result = tiptapTree.remove(data, itemId)
       result = tiptapTree.insertAfter(result, targetId, item)
       return result
     }
   }
-  
+
   if (action.type === 'reorder') {
     const { sourceId, targetId, position } = action
-    
+
     // Find the item that's being moved
     const item = tiptapTree.find(data, sourceId)
     if (!item)
       return data
-    
+
     // Don't allow dropping on itself
     if (sourceId === targetId)
       return data
-    
+
     // Remove the item from its current position
     let result = tiptapTree.remove(data, sourceId)
-    
+
     // Insert at the new position
     if (position === 'before') {
       result = tiptapTree.insertBefore(result, targetId, item)
-    } else {
+    }
+    else {
       result = tiptapTree.insertAfter(result, targetId, item)
     }
-    
+
     return result
   }
-  
+
   return data
 }
 
 // Helper function to convert flat editor nodes to tree structure
 export function editorNodesToTree(nodes: any[]): TiptapTreeItem[] {
-  if (!nodes || !Array.isArray(nodes)) return []
-  
+  if (!nodes || !Array.isArray(nodes))
+    return []
+
   return nodes.map(node => ({
     title: node.id,
     name: node.name || node.id,
     icon: node.icon || 'mdi:circle',
     content: node.content,
     selected: node.selected,
-    depth: node.depth || 0
+    depth: node.depth || 0,
   }))
 }

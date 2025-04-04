@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import type { Editor } from '@tiptap/vue-3'
-import { cn } from '@/lib/utils'
-import { computed, reactive, type HTMLAttributes, watch } from 'vue'
-import { useTiptapContext } from '.'
+import type { HTMLAttributes } from 'vue'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
+import { cn } from '@/lib/utils'
+import { computed, reactive, watch } from 'vue'
+import { useTiptapContext } from '.'
 
 const props = defineProps<{
   editor?: Editor | null
@@ -28,7 +29,7 @@ const slotContents = reactive<Record<string, string>>(props.componentSlots || {}
 // Update form values when component slots change
 watch(() => props.componentSlots, (newSlots) => {
   if (newSlots) {
-    Object.keys(newSlots).forEach(key => {
+    Object.keys(newSlots).forEach((key) => {
       slotContents[key] = newSlots[key]
     })
   }
@@ -43,25 +44,25 @@ const componentMeta = computed(() => {
     slots: [
       {
         name: 'default',
-        description: 'Default content slot'
+        description: 'Default content slot',
       },
       {
         name: 'icon',
-        description: 'Icon content'
+        description: 'Icon content',
       },
       {
         name: 'description',
-        description: 'Additional description text'
-      }
-    ]
+        description: 'Additional description text',
+      },
+    ],
   }
 })
 
 // Handle slot content updates
-const updateSlotContent = (slotName: string, content: string) => {
+function updateSlotContent(slotName: string, content: string) {
   slotContents[slotName] = content
   emits('update:componentSlots', { ...slotContents })
-  
+
   // If editor and componentId are available, update the node
   if (editor.value && props.componentId) {
     editor.value.chain().focus().updateComponentSlots(props.componentId, { ...slotContents }).run()
@@ -70,37 +71,41 @@ const updateSlotContent = (slotName: string, content: string) => {
 </script>
 
 <template>
-  <div 
+  <div
     :class="cn(
       'tiptap-slot-panel',
-      props.class
+      props.class,
     )"
     data-slot="tiptap-slot-panel"
   >
     <div class="space-y-4">
-      <h3 class="text-sm font-medium">{{ componentName || componentMeta.name }} Slots</h3>
-      
+      <h3 class="text-sm font-medium">
+        {{ componentName || componentMeta.name }} Slots
+      </h3>
+
       <div class="space-y-6">
-        <div 
-          v-for="slot in componentMeta.slots" 
+        <div
+          v-for="slot in componentMeta.slots"
           :key="slot.name"
           class="space-y-2"
         >
           <div class="flex justify-between items-baseline">
             <Label :for="`slot-${slot.name}`">{{ slot.name }}</Label>
           </div>
-          
+
           <Textarea
             :id="`slot-${slot.name}`"
             :value="slotContents[slot.name] || ''"
-            @input="updateSlotContent(slot.name, $event.target.value)"
             :placeholder="slot.description || `Content for ${slot.name} slot`"
             rows="4"
             class="resize-y min-h-[100px]"
+            @input="updateSlotContent(slot.name, $event.target.value)"
           />
-          
-          <p v-if="slot.description" class="text-xs text-muted-foreground">{{ slot.description }}</p>
-          
+
+          <p v-if="slot.description" class="text-xs text-muted-foreground">
+            {{ slot.description }}
+          </p>
+
           <div class="text-xs text-muted-foreground">
             <p>You can use HTML in slots. Examples:</p>
             <pre class="bg-muted p-1 rounded mt-1">&lt;p&gt;Text content&lt;/p&gt;</pre>

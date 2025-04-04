@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { Editor } from '@tiptap/vue-3'
+import type { HTMLAttributes } from 'vue'
 import { cn } from '@/lib/utils'
-import { computed, type HTMLAttributes, ref } from 'vue'
+import { computed } from 'vue'
 import { useTiptapContext } from '.'
 
 const props = defineProps<{
@@ -14,7 +15,8 @@ const props = defineProps<{
 let editorContext
 try {
   editorContext = useTiptapContext()
-} catch (e) {
+}
+catch (e) {
   // No provider found, this editor will manage its own state
   editorContext = null
 }
@@ -25,11 +27,11 @@ const useExternalProvider = computed(() => !!editorContext)
 </script>
 
 <template>
-  <div 
+  <div
     :class="cn(
       'tiptap-editor',
       props.fullScreen && 'fixed inset-0 z-50',
-      props.class
+      props.class,
     )"
     data-slot="tiptap-editor"
   >

@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import { computed, h, ref, render, watchEffect } from 'vue'
-import { TreeItem, type FlattenedItem } from 'reka-ui'
-import { draggable, dropTargetForElements, monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter'
-import { type Instruction, attachInstruction, extractInstruction } from '@atlaskit/pragmatic-drag-and-drop-hitbox/tree-item'
-import { pointerOutsideOfPreview } from '@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview'
-import { setCustomNativeDragPreview } from '@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview'
-import { combine } from '@atlaskit/pragmatic-drag-and-drop/combine'
-import { unrefElement } from '@vueuse/core'
-import { cn } from '@/lib/utils'
+import type { Instruction } from '@atlaskit/pragmatic-drag-and-drop-hitbox/tree-item'
+import type { FlattenedItem } from 'reka-ui'
 import { Button } from '@/components/ui/button'
-import Icon from './TiptapIcon.vue'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger
+  TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { attachInstruction, extractInstruction } from '@atlaskit/pragmatic-drag-and-drop-hitbox/tree-item'
+import { combine } from '@atlaskit/pragmatic-drag-and-drop/combine'
+import { draggable, dropTargetForElements, monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter'
+import { pointerOutsideOfPreview } from '@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview'
+import { setCustomNativeDragPreview } from '@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview'
+import { unrefElement } from '@vueuse/core'
+import { TreeItem } from 'reka-ui'
+import { computed, h, ref, render, watchEffect } from 'vue'
+import Icon from './TiptapIcon.vue'
 
 const props = defineProps<{
   item: FlattenedItem<any>
@@ -39,7 +40,7 @@ const node = computed(() => {
     icon: props.item.value.icon || 'mdi:circle',
     content: props.item.value.content,
     selected: props.item.value.selected,
-    depth: props.item.value.depth
+    depth: props.item.value.depth,
   }
 })
 
@@ -57,10 +58,10 @@ watchEffect((onCleanup) => {
   if (!currentElement)
     return
 
-  const item = { 
-    ...props.item.value, 
-    level: props.item.level, 
-    id: props.item._id 
+  const item = {
+    ...props.item.value,
+    level: props.item.level,
+    id: props.item._id,
   }
 
   const dndFunction = combine(
@@ -136,31 +137,31 @@ watchEffect((onCleanup) => {
 })
 
 // Handle node selection
-const handleClick = (event) => {
+function handleClick(event) {
   event.preventDefault()
   emits('select-node', node.value.id)
 }
 
 // Handle node duplication
-const handleDuplicate = (event) => {
+function handleDuplicate(event) {
   event.stopPropagation()
   emits('duplicate-node', node.value.id)
 }
 
 // Handle node deletion
-const handleDelete = (event) => {
+function handleDelete(event) {
   event.stopPropagation()
   emits('delete-node', node.value.id)
 }
 </script>
 
 <template>
-  <TreeItem 
-    ref="elRef" 
-    :value="item.value" 
+  <TreeItem
+    ref="elRef"
+    :value="item.value"
     :level="item.level"
     class="outline-node group relative w-full border-none py-2 px-3 rounded-md cursor-pointer"
-    :class="{ 
+    :class="{
       'opacity-50': isDragging,
       'bg-accent text-accent-foreground font-medium': node.selected,
       'hover:bg-accent hover:text-accent-foreground': !node.selected,
@@ -178,16 +179,16 @@ const handleDelete = (event) => {
           {{ node.content }}
         </span>
       </div>
-      
+
       <!-- Actions -->
       <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100">
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger asChild>
-              <Button 
-                size="icon" 
-                variant="ghost" 
-                class="h-6 w-6" 
+            <TooltipTrigger as-child>
+              <Button
+                size="icon"
+                variant="ghost"
+                class="h-6 w-6"
                 @click.stop="handleDuplicate"
               >
                 <Icon name="mdi:content-copy" class="h-3.5 w-3.5" />
@@ -195,13 +196,13 @@ const handleDelete = (event) => {
             </TooltipTrigger>
             <TooltipContent>Duplicate</TooltipContent>
           </Tooltip>
-          
+
           <Tooltip>
-            <TooltipTrigger asChild>
-              <Button 
-                size="icon" 
-                variant="ghost" 
-                class="h-6 w-6 text-destructive hover:text-destructive" 
+            <TooltipTrigger as-child>
+              <Button
+                size="icon"
+                variant="ghost"
+                class="h-6 w-6 text-destructive hover:text-destructive"
                 @click.stop="handleDelete"
               >
                 <Icon name="mdi:delete" class="h-3.5 w-3.5" />
@@ -214,13 +215,15 @@ const handleDelete = (event) => {
     </div>
 
     <!-- Drag indicator -->
-    <div v-if="instruction" class="absolute h-full w-full top-0 border-primary" :style="{
-      left: `${instruction?.currentLevel * instruction?.indentPerLevel}px`,
-      width: `calc(100% - ${instruction?.currentLevel * instruction?.indentPerLevel}px)`,
-    }" :class="{
-      '!border-b-2': instruction?.type === 'reorder-below',
-      '!border-t-2': instruction?.type === 'reorder-above',
-      '!border-2 rounded': instruction?.type === 'make-child',
-    }" />
+    <div
+      v-if="instruction" class="absolute h-full w-full top-0 border-primary" :style="{
+        left: `${instruction?.currentLevel * instruction?.indentPerLevel}px`,
+        width: `calc(100% - ${instruction?.currentLevel * instruction?.indentPerLevel}px)`,
+      }" :class="{
+        '!border-b-2': instruction?.type === 'reorder-below',
+        '!border-t-2': instruction?.type === 'reorder-above',
+        '!border-2 rounded': instruction?.type === 'make-child',
+      }"
+    />
   </TreeItem>
 </template>

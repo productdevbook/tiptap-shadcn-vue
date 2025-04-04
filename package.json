@@ -1,10 +1,12 @@
 {
   "name": "tiptap-shadcn-vue",
-  "private": false,
   "type": "module",
   "version": "0.0.1",
+  "private": false,
+  "packageManager": "pnpm@10.7.1",
   "description": "Shadcn + Tiptap component for Vue 3",
   "license": "MIT",
+  "files": [],
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -16,13 +18,11 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "files": [],
   "dependencies": {
     "@atlaskit/pragmatic-drag-and-drop": "^1.5.2",
     "@atlaskit/pragmatic-drag-and-drop-hitbox": "^1.0.3",
     "@iconify/vue": "^4.3.0"
   },
-  "packageManager": "pnpm@10.7.1",
   "devDependencies": {
     "@antfu/eslint-config": "^4.11.0",
     "@nuxt/icon": "1.11.0",
