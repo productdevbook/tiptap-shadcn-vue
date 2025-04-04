@@ -17,4 +17,11 @@ export default defineNuxtConfig({
     serverBundle: 'remote',
     mode: 'svg',
   },
+  notivue: {
+    notifications: {
+      global: {
+        duration: 2000,
+      },
+    },
+  },
 })
