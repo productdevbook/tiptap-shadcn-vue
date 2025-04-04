@@ -33,16 +33,30 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
     ],
+    optimizeDeps: {
+      include: [
+        '@vueuse/core',
+        'clsx',
+        'tailwind-merge',
+        'reka-ui',
+        'class-variance-authority',
+        '@iconify/vue',
+        '@atlaskit/pragmatic-drag-and-drop/element/adapter',
+        '@atlaskit/pragmatic-drag-and-drop-hitbox/tree-item',
+        '@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview',
+        '@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview',
+        '@atlaskit/pragmatic-drag-and-drop/combine',
+        'lucide-vue-next',
+        '@tiptap/vue-3',
+        '@tiptap/starter-kit',
+        '@tiptap/extension-placeholder',
+        '@tiptap/extension-link',
+        '@tiptap/extension-character-count'
+      ],
+    },
   },
   shadcn: {
-    /**
-     * Prefix for all the imported component
-     */
     prefix: '',
-    /**
-     * Directory that the component lives in.
-     * @default "./components/ui"
-     */
     componentDir: './app/components/ui'
-  }
+  },
 })

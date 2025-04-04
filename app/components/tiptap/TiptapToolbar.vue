@@ -16,12 +16,9 @@ import Icon from './TiptapIcon.vue'
 const props = defineProps<{
   editor?: Editor | null
   class?: HTMLAttributes['class']
-  loadingComponents?: boolean
 }>()
 
-const emits = defineEmits<{
-  'open-component-selector': []
-}>()
+const emits = defineEmits<{}>()
 
 // Get editor from context if not provided directly
 const { editor: contextEditor } = useTiptapContext()
@@ -37,11 +34,6 @@ const isActive = (type: string, attributes = {}) => {
   if (!isEditorReady.value) return false
   
   return editor.value!.isActive(type, attributes)
-}
-
-// Handle opening the component selector
-const handleOpenComponentSelector = () => {
-  emits('open-component-selector')
 }
 
 // Character and word count
@@ -319,26 +311,6 @@ const wordCount = computed(() => {
     </div>
     
     <Separator orientation="vertical" class="h-6" />
-    
-    <!-- Component Insertion -->
-    <div class="flex items-center gap-1">
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button 
-              size="icon" 
-              variant="ghost" 
-              @click="handleOpenComponentSelector" 
-              :disabled="!isEditorReady || loadingComponents"
-            >
-              <Icon name="mdi:puzzle-outline" class="h-5 w-5" />
-              <span v-if="loadingComponents" class="ml-2 text-xs animate-spin">...</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>Insert Component</TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    </div>
 
     <!-- Word count -->
     <div class="ml-auto flex items-center text-xs text-muted-foreground">
