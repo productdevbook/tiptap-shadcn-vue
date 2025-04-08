@@ -6,7 +6,7 @@ body:
     attributes:
       value: |
         Thanks for taking the time to report this issue! Please complete the information below to help us fix the problem quickly.
-        
+
   - type: textarea
     id: description
     attributes:
@@ -15,7 +15,7 @@ body:
       placeholder: When I try to use the editor, it crashes when I paste content...
     validations:
       required: true
-      
+
   - type: textarea
     id: reproduction
     attributes:
@@ -27,7 +27,7 @@ body:
         3. See error
     validations:
       required: true
-      
+
   - type: textarea
     id: expected
     attributes:
@@ -36,7 +36,7 @@ body:
       placeholder: The editor should handle the pasted content correctly...
     validations:
       required: true
-      
+
   - type: dropdown
     id: browsers
     attributes:
@@ -52,7 +52,7 @@ body:
         - Other (please specify in Additional Info)
     validations:
       required: true
-      
+
   - type: dropdown
     id: os
     attributes:
@@ -67,7 +67,7 @@ body:
         - Other (please specify in Additional Info)
     validations:
       required: true
-      
+
   - type: input
     id: version
     attributes:
@@ -76,7 +76,7 @@ body:
       placeholder: e.g., v1.0.0
     validations:
       required: false
-      
+
   - type: textarea
     id: screenshots
     attributes:
@@ -85,7 +85,7 @@ body:
       placeholder: You can paste images directly here!
     validations:
       required: false
-      
+
   - type: textarea
     id: additional
     attributes:
@@ -94,7 +94,7 @@ body:
       placeholder: Environment details, related issues, etc.
     validations:
       required: false
-      
+
   - type: checkboxes
     id: terms
     attributes:

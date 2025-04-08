@@ -6,7 +6,7 @@ body:
     attributes:
       value: |
         Thanks for taking the time to share your ideas! We appreciate your contribution to making our project better.
-        
+
   - type: dropdown
     id: feature_type
     attributes:
@@ -20,7 +20,7 @@ body:
         - Other (please describe below)
     validations:
       required: true
-      
+
   - type: textarea
     id: problem
     attributes:
@@ -29,7 +29,7 @@ body:
       placeholder: I'm always frustrated when [...]
     validations:
       required: false
-      
+
   - type: textarea
     id: solution
     attributes:
@@ -38,7 +38,7 @@ body:
       placeholder: It would be great if the component could...
     validations:
       required: true
-      
+
   - type: textarea
     id: alternatives
     attributes:
@@ -47,7 +47,7 @@ body:
       placeholder: I thought about implementing it by...
     validations:
       required: false
-      
+
   - type: textarea
     id: examples
     attributes:
@@ -56,7 +56,7 @@ body:
       placeholder: This feature exists in [project link] and works by...
     validations:
       required: false
-      
+
   - type: textarea
     id: context
     attributes:
@@ -65,7 +65,7 @@ body:
       placeholder: You can paste images directly here!
     validations:
       required: false
-      
+
   - type: checkboxes
     id: terms
     attributes:
