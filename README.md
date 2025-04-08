@@ -44,11 +44,8 @@ This package includes the following components:
 
 Make sure to install the required dependencies:
 
-TODO: [CLI](https://github.com/productdevbook/tiptap-shadcn-vue/issues/1)
-
 ```bash
-# Install Shadcn CLI - comming soon
-npx shadcn-vue@latest add "https://github.com/productdevbook/tiptap-shadcn-vue/component.json"
+npx shadcn-vue@latest add "https://tiptap-shadcn-vue.pages.dev/r/tiptap.json"
 ```
 
 ## Usage
