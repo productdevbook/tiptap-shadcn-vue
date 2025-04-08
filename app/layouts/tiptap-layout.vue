@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { TiptapProvider, TiptapTreeStructure } from '~/components/ui/tiptap'
 import {
   Sidebar,
   SidebarContent,
@@ -20,7 +19,7 @@ import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
 import StarterKit from '@tiptap/starter-kit'
 import { useEditor } from '@tiptap/vue-3'
-import { TiptapProvider, TiptapTreeStructure } from '~/components/tiptap-editor/tiptap'
+import { TiptapProvider, TiptapTreeStructure } from '~/components/ui/tiptap'
 // Editor content
 const content = ref('')
 
