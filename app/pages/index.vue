@@ -11,6 +11,65 @@
       A modern, extensible rich text editor built with Tiptap, shadcn-vue components, and Nuxt 4.
     </p>
 
+    <!-- Installation Section - Outside of the grid with new design -->
+    <div class="my-10 relative overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+      <div class="absolute -bottom-20 -left-20 w-56 h-56 bg-primary/15 rounded-full blur-3xl" />
+
+      <div class="relative z-10 border border-primary/30 bg-gradient-to-r from-background via-background/95 to-background/90 rounded-xl overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/40 via-primary to-primary/40" />
+
+        <div class="p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div class="space-y-3 max-w-lg">
+            <div class="inline-flex items-center gap-2 px-3 py-1 text-sm rounded-full bg-primary/10 text-primary border border-primary/20">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Installation
+            </div>
+            <h2 class="text-2xl font-bold">
+              Add Tiptap to your project
+            </h2>
+            <p class="text-muted-foreground">
+              Easily integrate this rich text editor into your Vue project with a simple command using shadcn-vue.
+            </p>
+          </div>
+
+          <div class="flex-1 min-w-0 max-w-2xl">
+            <div class="relative">
+              <div class="bg-black rounded-md p-1 shadow-lg">
+                <div class="flex items-center gap-2 px-4 py-2 border-b border-white/10">
+                  <div class="flex gap-1.5">
+                    <div class="w-3 h-3 rounded-full bg-red-500" />
+                    <div class="w-3 h-3 rounded-full bg-yellow-500" />
+                    <div class="w-3 h-3 rounded-full bg-green-500" />
+                  </div>
+                  <div class="text-xs text-gray-400 font-mono">
+                    Terminal
+                  </div>
+                </div>
+                <div class="p-4 font-mono text-sm text-white overflow-x-auto">
+                  <code>npx shadcn-vue@latest add "https://tiptap-shadcn-vue.pages.dev/r/tiptap.json"</code>
+                </div>
+              </div>
+              <button
+                onclick="navigator.clipboard.writeText('npx shadcn-vue@latest add \'https://tiptap-shadcn-vue.pages.dev/r/tiptap.json\'')"
+                class="absolute top-2 right-2 p-1.5 rounded-md bg-white/10 hover:bg-white/20 transition-colors"
+                title="Copy to clipboard"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/70">
+                  <rect width="14" height="14" x="8" y="2" rx="2" ry="2" />
+                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
       <!-- Tiptap Example 1 Card -->
       <NuxtLink to="/tiptap" class="border-2 border-primary rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-300 bg-primary/5">
