@@ -12,7 +12,7 @@ const DEPENDENCIES = new Map<string, string[]>([
   ['@vueuse/core', []],
 ])
 
-const REGISTRY_URL = process.env.REGISTRY_URL ?? 'https://tiptap-shadcn-vue.pages.dev/r'
+const REGISTRY_URL = 'https://tiptap-shadcn-vue.pages.dev/r'
 const REGISTRY_DEPENDENCY = '@/'
 
 type ArrayItem<T> = T extends Array<infer X> ? X : never
@@ -20,7 +20,7 @@ type RegistryItem = ArrayItem<Registry>
 export async function buildRegistry() {
   const registryRootPath = resolve('app', 'components')
   const registry = [] // This will hold all the UI registry items
-  const uiPath = resolve(registryRootPath, 'tiptap-editor')
+  const uiPath = resolve(registryRootPath, 'ui')
 
   const [ui] = await Promise.all([
     traverseUI(uiPath),
@@ -62,7 +62,7 @@ async function buildUIRegistry(componentPath: string, componentName: string) {
     if (!dirent.isFile())
       continue
     const filepath = join(componentPath, dirent.name)
-    const relativePath = join('tiptap-editor', componentName, dirent.name)
+    const relativePath = join('ui', componentName, dirent.name)
     const source = await readFile(filepath, { encoding: 'utf8' })
     const target = ''
 
