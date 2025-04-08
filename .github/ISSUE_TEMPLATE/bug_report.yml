@@ -5,12 +5,13 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to report this issue! Please complete the information below to help us fix the problem quickly.
-
+        ## 🙏 Thanks for taking the time to report this issue!
+        ### Please complete the information below to help us fix the problem quickly.
+        
   - type: textarea
     id: description
     attributes:
-      label: Describe the bug
+      label: 🔍 Describe the bug
       description: A clear and concise description of what the bug is
       placeholder: When I try to use the editor, it crashes when I paste content...
     validations:
@@ -19,7 +20,7 @@ body:
   - type: textarea
     id: reproduction
     attributes:
-      label: Steps to reproduce
+      label: 🔄 Steps to reproduce
       description: How can we recreate this issue? Be specific!
       placeholder: |
         1. Go to '...'
@@ -31,7 +32,7 @@ body:
   - type: textarea
     id: expected
     attributes:
-      label: Expected behavior
+      label: ✅ Expected behavior
       description: What did you expect to happen?
       placeholder: The editor should handle the pasted content correctly...
     validations:
@@ -40,7 +41,7 @@ body:
   - type: dropdown
     id: browsers
     attributes:
-      label: Browser
+      label: 🌐 Browser
       description: What browsers are you seeing the problem on?
       multiple: true
       options:
@@ -56,7 +57,7 @@ body:
   - type: dropdown
     id: os
     attributes:
-      label: Operating System
+      label: 💻 Operating System
       multiple: true
       options:
         - Windows
@@ -71,7 +72,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: Component Version
+      label: 📊 Component Version
       description: What version of the component are you using?
       placeholder: e.g., v1.0.0
     validations:
@@ -80,7 +81,7 @@ body:
   - type: textarea
     id: screenshots
     attributes:
-      label: Screenshots
+      label: 📷 Screenshots
       description: If applicable, add screenshots to help explain your problem
       placeholder: You can paste images directly here!
     validations:
@@ -89,7 +90,7 @@ body:
   - type: textarea
     id: additional
     attributes:
-      label: Additional context
+      label: 📝 Additional context
       description: Add any other information about the problem here
       placeholder: Environment details, related issues, etc.
     validations:
@@ -98,10 +99,10 @@ body:
   - type: checkboxes
     id: terms
     attributes:
-      label: Before submitting
+      label: ✨ Before submitting
       description: Please confirm the following
       options:
-        - label: I've searched for existing issues and this hasn't been reported before
+        - label: 🔍 I've searched for existing issues and this hasn't been reported before
           required: true
-        - label: I've included all the information needed to reproduce the issue
+        - label: ℹ️ I've included all the information needed to reproduce the issue
           required: true
