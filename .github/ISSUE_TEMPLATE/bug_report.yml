@@ -1,13 +1,13 @@
-name: "🐛 Bug Report"
+name: 🐛 Bug Report
 description: Report a bug to help us improve
-labels: ["bug", "triage"]
+labels: [bug, triage]
 body:
   - type: markdown
     attributes:
       value: |
         ## 🙏 Thanks for taking the time to report this issue!
         ### Please complete the information below to help us fix the problem quickly.
-        
+
   - type: textarea
     id: description
     attributes:
