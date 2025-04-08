@@ -4,7 +4,7 @@ import { computed, onMounted, ref, watch } from 'vue'
 import { provideTiptapContext } from '.'
 
 const props = defineProps<{
-  editor: Editor | null
+  editor: Editor | undefined
 }>()
 
 // State management for the Tiptap context

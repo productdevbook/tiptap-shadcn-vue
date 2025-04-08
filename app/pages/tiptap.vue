@@ -22,7 +22,7 @@ const isMobile = useMediaQuery('(max-width: 768px)')
     </div>
 
     <!-- Editor Content Area -->
-    <div class="flex-1 overflow-auto">
+    <div class="flex-1 overflow-auto tiptap-editor-content">
       <TiptapContent placeholder="Start writing..." />
     </div>
 

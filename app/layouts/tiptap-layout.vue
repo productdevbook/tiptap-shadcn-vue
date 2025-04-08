@@ -14,6 +14,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from '@/components/ui/sidebar'
+import { useSmartShortcut } from '@/composables/useSmartShortCut'
 import CharacterCount from '@tiptap/extension-character-count'
 import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
@@ -49,6 +50,28 @@ onBeforeUnmount(() => {
   if (tiptapEditor.value) {
     tiptapEditor.value.destroy()
   }
+})
+
+useSmartShortcut({
+  keys: ['Meta', 'b'], // MacOS
+  contextSelector: '.tiptap-editor-content',
+  onTrigger: () => {
+    if (tiptapEditor.value?.chain().focus()) {
+      tiptapEditor.value.chain().focus().toggleBold().run()
+    }
+  },
+  preventDefault: true,
+})
+
+useSmartShortcut({
+  keys: ['Control', 'b'], // Window / Linux
+  contextSelector: '.tiptap-editor-content',
+  onTrigger: () => {
+    if (tiptapEditor.value?.chain().focus()) {
+      tiptapEditor.value.chain().focus().toggleBold().run()
+    }
+  },
+  preventDefault: true,
 })
 
 // Navigation items

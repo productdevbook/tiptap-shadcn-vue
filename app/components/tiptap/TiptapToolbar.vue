@@ -55,8 +55,7 @@ const wordCount = computed(() => {
     :class="cn(
       'tiptap-toolbar flex flex-wrap gap-1 items-center',
       props.class,
-    )"
-    data-slot="tiptap-toolbar"
+    )" data-slot="tiptap-toolbar"
   >
     <!-- History controls -->
     <div class="flex items-center gap-1">
@@ -64,9 +63,7 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :disabled="!editor?.can().undo()"
+              size="icon" variant="ghost" :disabled="!editor?.can().undo()"
               @click="editor?.chain().focus().undo().run()"
             >
               <Icon name="mdi:undo" class="h-5 w-5" />
@@ -78,9 +75,7 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :disabled="!editor?.can().redo()"
+              size="icon" variant="ghost" :disabled="!editor?.can().redo()"
               @click="editor?.chain().focus().redo().run()"
             >
               <Icon name="mdi:redo" class="h-5 w-5" />
@@ -99,10 +94,7 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :class="{ 'bg-accent': isActive('bold') }"
-              :disabled="!isEditorReady"
+              size="icon" variant="ghost" :class="{ 'bg-accent': isActive('bold') }" :disabled="!isEditorReady"
               @click="editor?.chain().focus().toggleBold().run()"
             >
               <Icon name="mdi:format-bold" class="h-5 w-5" />
@@ -114,10 +106,7 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :class="{ 'bg-accent': isActive('italic') }"
-              :disabled="!isEditorReady"
+              size="icon" variant="ghost" :class="{ 'bg-accent': isActive('italic') }" :disabled="!isEditorReady"
               @click="editor?.chain().focus().toggleItalic().run()"
             >
               <Icon name="mdi:format-italic" class="h-5 w-5" />
@@ -129,10 +118,7 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :class="{ 'bg-accent': isActive('strike') }"
-              :disabled="!isEditorReady"
+              size="icon" variant="ghost" :class="{ 'bg-accent': isActive('strike') }" :disabled="!isEditorReady"
               @click="editor?.chain().focus().toggleStrike().run()"
             >
               <Icon name="mdi:format-strikethrough" class="h-5 w-5" />
@@ -144,10 +130,7 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :class="{ 'bg-accent': isActive('code') }"
-              :disabled="!isEditorReady"
+              size="icon" variant="ghost" :class="{ 'bg-accent': isActive('code') }" :disabled="!isEditorReady"
               @click="editor?.chain().focus().toggleCode().run()"
             >
               <Icon name="mdi:code-tags" class="h-5 w-5" />
@@ -166,11 +149,8 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :class="{ 'bg-accent': isActive('heading', { level: 1 }) }"
-              :disabled="!isEditorReady"
-              @click="editor?.chain().focus().toggleHeading({ level: 1 }).run()"
+              size="icon" variant="ghost" :class="{ 'bg-accent': isActive('heading', { level: 1 }) }"
+              :disabled="!isEditorReady" @click="editor?.chain().focus().toggleHeading({ level: 1 }).run()"
             >
               <Icon name="mdi:format-header-1" class="h-5 w-5" />
             </Button>
@@ -181,11 +161,8 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :class="{ 'bg-accent': isActive('heading', { level: 2 }) }"
-              :disabled="!isEditorReady"
-              @click="editor?.chain().focus().toggleHeading({ level: 2 }).run()"
+              size="icon" variant="ghost" :class="{ 'bg-accent': isActive('heading', { level: 2 }) }"
+              :disabled="!isEditorReady" @click="editor?.chain().focus().toggleHeading({ level: 2 }).run()"
             >
               <Icon name="mdi:format-header-2" class="h-5 w-5" />
             </Button>
@@ -196,11 +173,8 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :class="{ 'bg-accent': isActive('heading', { level: 3 }) }"
-              :disabled="!isEditorReady"
-              @click="editor?.chain().focus().toggleHeading({ level: 3 }).run()"
+              size="icon" variant="ghost" :class="{ 'bg-accent': isActive('heading', { level: 3 }) }"
+              :disabled="!isEditorReady" @click="editor?.chain().focus().toggleHeading({ level: 3 }).run()"
             >
               <Icon name="mdi:format-header-3" class="h-5 w-5" />
             </Button>
@@ -211,11 +185,8 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :class="{ 'bg-accent': isActive('paragraph') }"
-              :disabled="!isEditorReady"
-              @click="editor?.chain().focus().setParagraph().run()"
+              size="icon" variant="ghost" :class="{ 'bg-accent': isActive('paragraph') }"
+              :disabled="!isEditorReady" @click="editor?.chain().focus().setParagraph().run()"
             >
               <Icon name="mdi:format-paragraph" class="h-5 w-5" />
             </Button>
@@ -233,11 +204,8 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :class="{ 'bg-accent': isActive('bulletList') }"
-              :disabled="!isEditorReady"
-              @click="editor?.chain().focus().toggleBulletList().run()"
+              size="icon" variant="ghost" :class="{ 'bg-accent': isActive('bulletList') }"
+              :disabled="!isEditorReady" @click="editor?.chain().focus().toggleBulletList().run()"
             >
               <Icon name="mdi:format-list-bulleted" class="h-5 w-5" />
             </Button>
@@ -248,11 +216,8 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :class="{ 'bg-accent': isActive('orderedList') }"
-              :disabled="!isEditorReady"
-              @click="editor?.chain().focus().toggleOrderedList().run()"
+              size="icon" variant="ghost" :class="{ 'bg-accent': isActive('orderedList') }"
+              :disabled="!isEditorReady" @click="editor?.chain().focus().toggleOrderedList().run()"
             >
               <Icon name="mdi:format-list-numbered" class="h-5 w-5" />
             </Button>
@@ -270,11 +235,8 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :class="{ 'bg-accent': isActive('blockquote') }"
-              :disabled="!isEditorReady"
-              @click="editor?.chain().focus().toggleBlockquote().run()"
+              size="icon" variant="ghost" :class="{ 'bg-accent': isActive('blockquote') }"
+              :disabled="!isEditorReady" @click="editor?.chain().focus().toggleBlockquote().run()"
             >
               <Icon name="mdi:format-quote-close" class="h-5 w-5" />
             </Button>
@@ -285,9 +247,7 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :disabled="!isEditorReady"
+              size="icon" variant="ghost" :disabled="!isEditorReady"
               @click="editor?.chain().focus().setHorizontalRule().run()"
             >
               <Icon name="mdi:minus" class="h-5 w-5" />
@@ -299,11 +259,8 @@ const wordCount = computed(() => {
         <Tooltip>
           <TooltipTrigger as-child>
             <Button
-              size="icon"
-              variant="ghost"
-              :class="{ 'bg-accent': isActive('codeBlock') }"
-              :disabled="!isEditorReady"
-              @click="editor?.chain().focus().setCodeBlock().run()"
+              size="icon" variant="ghost" :class="{ 'bg-accent': isActive('codeBlock') }"
+              :disabled="!isEditorReady" @click="editor?.chain().focus().setCodeBlock().run()"
             >
               <Icon name="mdi:code-braces" class="h-5 w-5" />
             </Button>
