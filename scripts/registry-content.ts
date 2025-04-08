@@ -107,9 +107,8 @@ async function getFileDependencies(filename: string, sourceCode: string) {
   }
 
   if (filename.endsWith('.ts')) {
-    const ast = parseSync(sourceCode, {
+    const ast = parseSync(filename, sourceCode, {
       sourceType: 'module',
-      sourceFilename: filename,
     })
 
     const sources = ast.program.body
