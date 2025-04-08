@@ -1,8 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 🤔 Questions & Discussions
-    url: https://github.com/productdevbook/tiptap-shadcn-vue/discussions
-    about: Use GitHub Discussions for questions, support and general discussion
   - name: 📚 Documentation
     url: https://github.com/productdevbook/tiptap-shadcn-vue#readme
     about: Check the README and documentation for guides and examples
