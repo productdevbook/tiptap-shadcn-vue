@@ -5,4 +5,7 @@ contact_links:
     about: Use GitHub Discussions for questions, support and general discussion
   - name: 📚 Documentation
     url: https://github.com/productdevbook/tiptap-shadcn-vue#readme
-    about: Check the README and documentation first
+    about: Check the README and documentation for guides and examples
+  - name: 🙌 Contributing Guidelines
+    url: https://github.com/productdevbook/tiptap-shadcn-vue/blob/main/CONTRIBUTING.md
+    about: Want to contribute? Read our guidelines first
