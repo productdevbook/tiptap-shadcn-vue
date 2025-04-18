@@ -162,17 +162,15 @@ const showKeyboardShortcuts = ref(false)
                 </h1>
               </div>
 
-              <div class="flex items-center space-x-2">
-                <div class="text-sm text-muted-foreground flex items-center space-x-3">
-                  <Button variant="outline" size="sm" @click="showKeyboardShortcuts = true">
-                    <Icon name="mdi:keyboard-outline" class="h-4 w-4 mr-1" />
-                    Shortcuts
-                  </Button>
-                  <Button variant="outline" size="sm">
-                    <Icon name="mdi:help-circle-outline" class="h-4 w-4 mr-1" />
-                    Help
-                  </Button>
-                </div>
+              <div class="text-sm text-muted-foreground flex items-center space-x-3">
+                <Button variant="outline" size="sm" @click="showKeyboardShortcuts = true">
+                  <Icon name="mdi:keyboard-outline" class="h-4 w-4 mr-1" />
+                  Shortcuts
+                </Button>
+                <Button variant="outline" size="sm">
+                  <Icon name="mdi:help-circle-outline" class="h-4 w-4 mr-1" />
+                  Help
+                </Button>
               </div>
             </header>
 
